@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="container">
+    <hr />
+    <h1>Component ui arch</h1>
+    <hr />
+
+    <div id="box1" class="alert alert-danger">
+        <input id="inp1" type="number" onchange="changeHandler()" />
+        <hr />
+        <span id="dispEle" class="badge badge-dark">0</span>
+    </div>
+
+    <script>
+        let inp1 = document.getElementById('inp1')
+        let count = 0;
+        setInterval(() => {
+            count++
+            inp1.value = count
+            inp1.dispatchEvent(new Event('change'))
+        }, 2000)
+        function changeHandler() {
+            document.getElementById('dispEle').innerHTML = count;
+        }
+    </script>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
