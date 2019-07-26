@@ -20,6 +20,26 @@ class Greeting extends Component {
             </div>
         );
     }
+    componentDidMount() {
+        console.log("Greeting :: componentDidMount()");
+        this.interval = setInterval(() => {
+            this.forceUpdate();
+        }, 1000)
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // console.log(prevProps)
+        // console.log(this.props);
+        console.log("Greeting :: componentDidUpdate()");
+    }
+    componentWillUnmount() {
+        console.log("Greeting :: componentWillUnmount()");
+        clearInterval(this.interval)
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("Greeting :: shouldComponentUpdate()");
+        return this.props.message !== nextProps.message;
+    }
 }
+Greeting.displayName = "ibs-greeting"
 
 export default Greeting;
