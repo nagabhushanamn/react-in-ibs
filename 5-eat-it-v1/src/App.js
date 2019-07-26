@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
-
+import classNames from 'classnames'
 
 class App extends React.Component {
   state = {
+    currentTab: 1,
     items: [
       {
         id: 1,
@@ -13,23 +14,36 @@ class App extends React.Component {
         imgPath: 'images/veg.png',
         description: 'always veg is yummy'
       },
-      // {
-      //   id: 2,
-      //   name: 'Non-Veg',
-      //   price: 120.00,
-      //   canBuy: true,
-      //   imgPath: 'images/non-veg.png',
-      //   description: 'non-veg is yummy'
-      // }
+      {
+        id: 2,
+        name: 'Non-Veg',
+        price: 120.00,
+        canBuy: true,
+        imgPath: 'images/non-veg.png',
+        description: 'non-veg is yummy'
+      }
     ]
+  }
+  changebTab(e, tabIndex) {
+    e.preventDefault();
+    this.setState({ currentTab: tabIndex })
   }
   renderBuyBtn(item) {
     if (item.canBuy)
       return (<button className="btn btn-dark btn-sm">buy</button>)
     else return null;
   }
+  renderTabPanel(item) {
+    let { currentTab } = this.state;
+    switch (currentTab) {
+      case 1: return (<div>{item.description}</div>)
+      case 2: return (<div>{"Not Yet"}</div>)
+      case 3: return (<div>{"None Yet"}</div>)
+      default: return null;
+    }
+  }
   renderItems() {
-    let { items } = this.state;
+    let { items, currentTab } = this.state;
     return items.map((item, idx) => {
       return (
         <div key={idx} className="list-group-item">
@@ -43,18 +57,16 @@ class App extends React.Component {
               {this.renderBuyBtn(item)}
               <ul className="nav nav-tabs">
                 <li className="nav-item">
-                  <a className="nav-link" href="/">Description</a>
+                  <a onClick={e => this.changebTab(e, 1)} className={classNames('nav-link', { active: currentTab === 1 })} href="/">Description</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/">Ingre..</a>
+                  <a onClick={e => this.changebTab(e, 2)} className={classNames('nav-link', { active: currentTab === 2 })} href="/">Ingre..</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/">Reviews</a>
+                  <a onClick={e => this.changebTab(e, 3)} className={classNames('nav-link', { active: currentTab === 3 })} href="/">Reviews</a>
                 </li>
               </ul>
-              <div>{item.description}</div>
-              <div>Not Yet</div>
-              <div>None Yet</div>
+              {this.renderTabPanel(item)}
             </div>
           </div>
         </div>
