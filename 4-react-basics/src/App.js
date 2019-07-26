@@ -4,6 +4,12 @@ import Greeting from './components/Greeting'
 
 import PropTypes from 'prop-types'
 import ActionBox from './components/ActionBox';
+import A from './components/A';
+import MealBox from './components/MealBox';
+import Veg from './components/Veg'
+import NonVeg from './components/NonVeg'
+import TopicList from './components/TopicList'
+import CommentList from './components/CommentList';
 
 class App extends React.Component {
   // state = {
@@ -45,7 +51,33 @@ class App extends React.Component {
         {message ? <Greeting message={message} /> : null} 
         */}
 
-        <ActionBox />
+        {/* <ActionBox /> */}
+
+        {/*
+        <A color="red" />
+        <A color="green" /> 
+        */}
+        {/* 
+        <MealBox>
+          <Veg />
+          <Veg />
+        </MealBox>
+
+        <MealBox>
+          <NonVeg />
+          <NonVeg />
+          <NonVeg />
+        </MealBox> 
+        */}
+
+        <div className="row">
+          <div className="col-sm-6 col-md-6">
+            <TopicList />
+          </div>
+          <div className="col-sm-6 col-md-6">
+            <CommentList />
+          </div>
+        </div>
 
 
       </div>

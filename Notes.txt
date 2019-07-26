@@ -289,8 +289,8 @@ problems/limitations with plain-js ( your-code ) with browser-apis
          - props & state
          - life-cycle methods
          - inter component communication
-
          - context
+         - container components
          - Higher-Order-Components  - pattern
 
          
