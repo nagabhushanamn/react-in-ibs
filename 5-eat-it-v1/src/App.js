@@ -13,14 +13,14 @@ class App extends React.Component {
         imgPath: 'images/veg.png',
         description: 'always veg is yummy'
       },
-      {
-        id: 2,
-        name: 'Non-Veg',
-        price: 120.00,
-        canBuy: true,
-        imgPath: 'images/non-veg.png',
-        description: 'non-veg is yummy'
-      }
+      // {
+      //   id: 2,
+      //   name: 'Non-Veg',
+      //   price: 120.00,
+      //   canBuy: true,
+      //   imgPath: 'images/non-veg.png',
+      //   description: 'non-veg is yummy'
+      // }
     ]
   }
   renderBuyBtn(item) {
